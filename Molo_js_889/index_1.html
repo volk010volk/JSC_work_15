@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        #counter {
+            margin-left: 20%;
+            margin-top: 10%;
+            height: auto;
+            width: auto;
+            display: flex;
+            left: 10px;
+            top: 50px;
+        }
+        #num, #buttonUp, #buttonDown, #reset, #inputN{
+            border: 2px solid black;
+        }
+        #num {
+            text-align: center;
+            font-size: 25pt;
+            border-radius: 5px 0px 0px 5px;
+            padding: 10px 5px 0px 5px;
+        }
+        #buttonUp {
+            padding: 2px 5px 0px 5px;
+            width: auto;
+            height: 25px;
+            border-radius: 0px 5px 0px 0px;
+        }
+        #buttonDown {
+            padding: 2px 5px 0px 5px;
+            width: auto;
+            height: 25px;
+            border-radius: 0px 0px 5px 0px;
+        }
+        #reset {
+            margin-left: 10px;
+            border-radius: 5px;
+            height: auto;
+            padding: 15px 5px 0px 5px;
+        }
+        #inputN {
+            margin-left: 20%;
+            margin-top: 10px;
+            border-radius: 5px;
+            width: 100px;
+            text-align: center;
+            padding: 5px;
+        }
+        #buttonUp::selection, #buttonDown::selection, #reset::selection{
+            background: transparent;
+        }
+        #buttonUp, #buttonDown, #reset, #inputN {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onclick="checkClick(event)">
+    <div id="counter">
+        <div id="num">0</div>
+        <div>
+            <div id="buttonUp">Encrease</div>
+            <div id="buttonDown">Decrease</div>
+        </div>
+        <div id="reset">Reset</div>
+    </div>
+    <div id="inputN">Input number</div>
+    <script>
+        var n = 0;
+        function checkClick(e){
+            switch(e.target.id){
+                case "buttonUp":
+                    n++;
+                    num.innerText = n;
+                    break;
+                case "buttonDown":
+                    n--;
+                    num.innerText = n;
+                    break;
+                case "reset":
+                    n = 0;
+                    num.innerText = n;
+                    break;
+                case "inputN":
+                    let m = +prompt("Input new value:");
+                    if (isNaN(m))
+                        alert("Error! Try input again.");
+                    else{
+                        n = m;
+                        num.innerText = n;
+                    }
+            }
+        }
+
+    </script>
+</body>
+</html>

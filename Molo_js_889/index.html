@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun</title>
+    <style>
+        #gun, #bullet, #aim, #scoreTable{
+            position: absolute;
+        }
+        #bullet, #aim {
+            border-radius: 50%;
+        }
+        #gun {
+            background-color: navy;
+            height: 20px;
+            width: 70px;
+            left: 10px;
+            top: 50px;
+        }
+        #bullet{
+            background-color: orange;
+            height: 20px;
+            width: 20px;
+            left: 50px;
+            top: 50px;
+            z-index: -1;
+        }
+        #aim{
+            background-color: orangered;
+            height: 40px;
+            width: 40px;
+            left: 230px;
+            top: 45px;
+            z-index: -2;
+        }
+    </style>
+</head>
+<body onkeydown="checkKey(event)">
+    <h2>Press space</h2>
+    <div id="gun"></div>
+    <div id="bullet"></div>
+    <div id="aim"></div>
+    <h2 id="scoreTable">Score: 0</h2>
+    <script>
+        var bulletX = 50, gameScore = 0;
+        var onFly = false;
+        function checkKey(e){
+            // console.log(e.code);
+            if (e.code == "Space" && !onFly){
+                onFly = true;
+                moveBullet();
+            }
+            if (e.code == "Escape" && onFly){
+                onFly = false;
+                // bulletX = 50;
+                // bullet.style.left = bulletX + "px";
+            }
+       }
+       function moveBullet(){
+           if (onFly){
+               bulletX += 5;
+               if (bulletX >= 230){
+                    bulletX = 50;
+                    onFly = false;
+                    gameScore++;
+                    scoreTable.innerText = "Score: " + gameScore;
+               }else
+                    setTimeout (moveBullet, 50);
+               bullet.style.left = bulletX + "px";
+           }
+       }
+
+    </script>
+</body>
+</html>
